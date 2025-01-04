@@ -8,12 +8,12 @@ necessary for the proper functioning of the project wAIves.
 """
 
 def exist_env(name_virtual_env):
-    """Verify if the virtual environment *```name_virtual_env```* exist in the current directory."""
+    """Verify if the virtual environment ```name_virtual_env``` exist in the current directory."""
     env_path = os.path.join(os.getcwd(), name_virtual_env, 'bin', 'activate')
     return os.path.exists(env_path)
 
 def connect_env(name_virtual_env):
-    """Connect to the virtual environment called *```name_virtual_env```*."""
+    """Connect to the virtual environment called ```name_virtual_env```."""
     command = f"bash -i -c 'source {name_virtual_env}/bin/activate'"
     command2 = f"source {name_virtual_env}/bin/activate"
     try:

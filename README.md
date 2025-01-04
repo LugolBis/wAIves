@@ -27,11 +27,19 @@ Ces tests ont permis de faire émerger les modèles fournissant les meilleurs r�
 Pour plus d'information regardez le dossier [Models](https://github.com/LugolBis/wAIves/tree/main/Models)
 
 ## Requierment :
+- *OpenWeatherMap* API key /!\
 - Python ~v3.10.9
 - Tensorflow v2.15.1
 - Flask v3.0.3
 - Flask_Cors v5.0.0
 - Torch v2.4.1
+
+## Utilisation en local :
+Téléchargez le projet et ajoutez un fichier ```api_key.txt``` contenant votre API key *OpenWeatherMap* dans le dossier **wAIves/Python/**
+Exécutez la commande (depuis le dossier **wAIves/Python/**) :
+```
+gunicorn -w 4 -b 0.0.0.0:5000 server:app
+```
 
 ## Sources des données météorologique :
 - NOAA
