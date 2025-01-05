@@ -32,8 +32,11 @@ def get_location(city_country):
         return None
     
 def get_api_key():
-    with open('api_key.txt') as fs:
-        return fs.read()
+    try:
+        with open('api_key.txt') as fs:
+            return fs.read()
+    except FileNotFoundError :
+        return "You haven't got an API key to acces to the data of OpenWeatherMap."
     
 def get_current_weather(location):
     api_key = get_api_key()

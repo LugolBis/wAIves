@@ -8,6 +8,7 @@ import os
 
 def use_model(model_name="wAIves1v5.1.h5", input_data=np.array):
     """The first arg needs to be a `str` and the second a `numpy.array`."""
+
     if "1v" in model_name:
         return use_modelTensorflow.load_and_predict(model_name, input_data)
     else:
