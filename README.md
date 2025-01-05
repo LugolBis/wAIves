@@ -1,4 +1,4 @@
-# wAIves
+# wAIves 🏄
 
 ## Objectif du projet :
 L'objectif de ce projet **personnel** est de développer des modèles d'**IA** capables de prédire des conditions de Surf à partir de données météorologiques.
@@ -36,9 +36,11 @@ Pour plus d'information regardez le dossier [Models](https://github.com/LugolBis
 
 ## Utilisation en local :
 Téléchargez le projet et ajoutez un fichier ```api_key.txt``` contenant votre API key *OpenWeatherMap* dans le dossier **wAIves/Python/**
-Exécutez la commande (depuis le dossier **wAIves/Python/**) :
+<br>
+<br>
+Exécutez la commande bash (depuis le dossier **wAIves/Python/**) :
 ```
-gunicorn -w 4 -b 0.0.0.0:5000 server:app
+$ gunicorn -w 4 -b 0.0.0.0:5000 server:app
 ```
 
 ## Sources des données météorologique :
