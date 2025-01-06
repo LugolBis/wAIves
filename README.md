@@ -37,10 +37,17 @@ $ python3 manage_env.py
 ```
 Ouvrez le fichier ***index.html*** et surfez !
 
+### Windows :
+1. Assurez vous de disposer de la commande ```python3``` pour lancer python depuis votre terminal Powershell.<br>
+   ```
+   $ python3 --version
+   ```
+   Si ce n'est pas le cas exécutez le fichier ***wAIves_config.bat***
+
 ## Requierment :
 - [OpenWeatherMap](https://openweathermap.org/appid) API key (free)
 - Python ~v3.10.9
-- 
+
 ## Sources des données météorologique :
 - NOAA
 - NDBC
