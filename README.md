@@ -38,15 +38,31 @@ $ python3 manage_env.py
 Ouvrez le fichier ***index.html*** et surfez !
 
 ### Windows :
-1. Assurez vous de disposer de la commande ```python3``` pour lancer python depuis votre terminal Powershell.<br>
-   ```
-   $ python3 --version
-   ```
-   Si ce n'est pas le cas exécutez le fichier ***wAIves_config.bat***
+Téléchargez le projet et ajoutez un fichier ```api_key.txt``` contenant votre API key *OpenWeatherMap* dans le dossier **wAIves/Python/**
+<br>
+<br>
+Exécutez le script python ***manage_env.py*** depuis le dossier **wAIves/Python/**
+<br>
+<br>
+Ouvrez le fichier ***index.html*** et surfez !
 
 ## Requierment :
 - [OpenWeatherMap](https://openweathermap.org/appid) API key (free)
-- Python ~v3.10.9
+
+- | Python version | Compatibility |
+  |:-:|:-:|
+  | >= v3.10 | ✅ |
+  | >= v3.9 | ✅ |
+  | >= v3.8 | ✅ |
+  | >= v3.7 | ✅ |
+  | >= v3.6 | ✅ |
+  | >= v3.5 | ✅ |
+  | >= v2.7  | ✅ |
+  | v3.0.* | ❌ |
+  | v3.1.* | ❌ |
+  | v3.2.* | ❌ |
+  | v3.3.* | ❌ |
+  | v3.4.* | ❌ |
 
 ## Sources des données météorologique :
 - NOAA
