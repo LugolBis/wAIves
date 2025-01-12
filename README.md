@@ -46,7 +46,7 @@ Exécutez le script python ***manage_env.py*** depuis le dossier **wAIves/Python
 <br>
 Ouvrez le fichier ***index.html*** et surfez !
 
-## Requierment :
+## Requirements :
 - [OpenWeatherMap](https://openweathermap.org/appid) API key (free)
 
 - | Python version | Compatibility |
