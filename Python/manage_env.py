@@ -161,7 +161,6 @@ class Windows(OS) :
 
     def start_server(self, name_virtual_env):
         # Command to start the server
-        python_executable =  f"python.exe"
         command = os.getcwd() + f"\\{name_virtual_env}\\Scripts\\waitress-serve --host=127.0.0.1 --port=5000 server:app"
         state = self.run_in_env(name_virtual_env, command)
         print(state)

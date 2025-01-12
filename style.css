@@ -1,0 +1,139 @@
+/* Style initial */
+
+body {
+  margin : 0px;
+  font-family: 'Arial', sans-serif;
+  background-color: #477292; /* Blanc cassé */
+  color: #333; /* Texte gris foncé */
+}
+
+.MyContainer {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 75vw;
+  padding: 2vw;
+  background-color: #789fc2; /* Bleu gris */
+  border-radius: 1vw;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  font-size: calc(5vw + 4vh); /* Taille de police qui s'adapte à la largeur et la hauteur */
+  width: 33.33vw; /* 1/3 de la largeur de l'écran */
+  height: auto; /* Ajuste la hauteur en fonction du contenu */
+  text-align: center; /* Centrer le texte horizontalement */
+  color: #e3de9b; /* Couleur de fond pour tester */
+  transition: all 0.1s ease; /* Transition douce lors des redimensionnements */
+}
+
+h2 {
+    color: #e3de9b;
+}
+
+h3, h4 {
+  color: #acd8ff; /* Bleu gris plus foncé */
+}
+
+label {
+    font-size: 1.1em;
+    color: #e3de9b;
+}
+
+select {
+    margin: 5px 0;
+    padding: 5px;
+    width: 25%;
+    border: 1px solid #b0bec5;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #ffffff; /* Blanc */
+    color: #333;
+}
+
+/* Inputs */
+input {
+  margin: 10px 0;
+  padding: 10px;
+  width: 50%;
+  border: 1px solid #b0bec5;
+  border-radius: 5px;
+  font-size: 1em;
+  background-color: #ffffff; /* Blanc */
+  color: #333;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+/* Boutons */
+button {
+  background-color: #5a7d9a; /* Bleu ciel terne */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #4a657d; /* Bleu gris plus foncé */
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Liens */
+a {
+  color: #5a7d9a; /* Bleu ciel terne */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: calc(6vw + 5vh); /* Taille plus grande pour écrans petits */
+    width: 90vw; /* Presque toute la largeur */
+    margin: calc(3vh + 10px) auto; /* Réduction des marges verticales */
+    padding: calc(2vh + 5px); /* Espacement interne légèrement augmenté */
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1199px) {
+  h1 {
+    font-size: calc(5.5vw + 4.5vh); /* Taille équilibrée */
+    width: 50vw; /* Largeur moyenne */
+    margin: calc(4vh + 10px) auto; /* Marges adaptées */
+  }
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: calc(4.5vw + 3.5vh); /* Taille réduite pour grands écrans */
+    width: 25vw; /* Réduction de la largeur */
+    margin: calc(6vh + 20px) auto; /* Marges verticales augmentées */
+  }
+}
+
+/* Static */
+#botomPage {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  text-align: center;
+}
+
+#firstInstruction {
+    color: #e3de9b;
+}
