@@ -9,6 +9,14 @@ This module encapsulates the management logic of the python virtual environment
 necessary for the proper functioning of the project wAIves.
 """
 
+def setup_logger(log_file):
+    """Configure the logger to write logs to a file."""
+    logging.basicConfig(
+        filename=log_file,
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+    )
+
 class OS :
 
     def __init__(self):
@@ -117,6 +125,8 @@ class Windows(OS) :
         !!! When you need to use the python of the virtual environnement, use a powershell commande like :
         pythonENV -c "print('Hello world!')"
         """
+        log_file = "server_log.txt"
+        setup_logger(log_file)
 
         python_executable = os.getcwd() + f"\\{name_virtual_env}\\Scripts\\python.exe"
         command = command.replace("pythonENV", python_executable).strip()
@@ -125,8 +135,10 @@ class Windows(OS) :
         try:
             print(f"full_command :\n{full_command}\n\n")
             result = subprocess.run(full_command, shell=True, check=True, text=True, capture_output=True)
+            logging.info(f"Command executed successfully:\n{result.stdout}")
             return result.stdout
         except subprocess.CalledProcessError as e:
+            logging.error(f"Error occurred while executing command:\n{e.stderr}")
             return f"Error: {e.stderr}\n\nfull_command :\n{full_command}\n\n"
 
     def install_dependencies(self, name_virtual_env:str):
@@ -145,7 +157,7 @@ class Windows(OS) :
                 result = subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
                 print(f"Successfully install : {module[0]}")
             except subprocess.CalledProcessError as e:
-                print(f"Error: {e.stderr}\n\nfull_command :\n{full_command}\n\n")
+                print(f"Error: {e.stderr}\n\nfull_command :\n{command}\n\n")
 
     def start_server(self, name_virtual_env):
         # Command to start the server
