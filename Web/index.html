@@ -11,9 +11,10 @@
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
   <script src="data.js"></script>
   <script src="models.js"></script>
+  <script src="api_key.js"></script>
   <script src="main.js"></script>
   <script src="playground.js"></script>
-  <div id="mainContainer">
+  <div id="mainContainer" class="MyContainer">
     <h1>wAIves</h1>
     <br><h3>Want to surf the perfect wave ?</h3>
       <h3>Don't let your surf session turn into a remake of <em>Brice de Nice</em> !</h3>
@@ -31,14 +32,11 @@
     <br><button id="getPrediction" onclick="run()">Wave height prediction</button>
     <br><h3 id="resultat"></h3>
   </div>
-  <div id="playgroundContainer">
+  <div id="playgroundContainer" class="MyContainer">
     <br><br>
     <h2>Playground</h2>
     <h4>Test models with custom data</h4>
-    <h4>You can easily retrieve the data you need using the following website : <a href="https://meteotrend.com/" title="Russian weather website" target="_blank">MeteoTrend</a></h4>
-    <p>MeteoTrend credits : The project was created and is maintained by FDSTAR company, 2009-2024</p>
-    <p>Weather in the world - accurate and detailed weather forecast anywhere in the world for today, tomorrow and week</p>
-    <p>© MeteoTrend.com - it is the weather forecast in your city, region and your country. All rights reserved, 2009-2024 Privacy Policy</p><br>
+    <h4>You can easily retrieve the data you need using the following website : <a href="https://meteotrend.com/" title="Russian weather website" target="_blank">MeteoTrend</a> .</h4>
     <form id="playgroundForm">
       <label>Sélectionnez un model:</label><br>
       <select id="modelPlayground">

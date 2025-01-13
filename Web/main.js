@@ -102,7 +102,7 @@ async function run() {
     const modelName = document.getElementById('modelMain').value ;
     const inputValue = document.getElementById('input').value ;
     const resultat = document.getElementById('resultat') ;
-    const apiKey = 'My api key';
+    const apiKey = openWeatherMap_key;
 
     const location = await getLocation(inputValue);
     const weather = await getWeatherData(apiKey,location) ;
