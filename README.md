@@ -16,7 +16,7 @@ Les donnés météorologiques récoltées  à l'aide de *OpenWeatherMap* (et fou
 La donnée inférée par les modèles : **wave height**
 <br>
 <br>
-Pour plus d'information regardez le dossier [Data](https://github.com/LugolBis/wAIves/tree/main/DATA)
+Pour plus d'information regardez le dossier [Data](https://github.com/LugolBis/wAIves/tree/web/DATA)
 
 ## Models :
 De nombreux models ont été entrainés avec diverses variation de leurs paramètres d'entraînement (epochs, metrics, layers et datasets).
@@ -24,45 +24,13 @@ De nombreux models ont été entrainés avec diverses variation de leurs paramè
 Ces tests ont permis de faire émerger les modèles fournissant les meilleurs résultats.
 <br>
 <br>
-Pour plus d'information regardez le dossier [Models](https://github.com/LugolBis/wAIves/tree/main/Models)
+Pour plus d'information regardez le dossier [Models](https://github.com/LugolBis/wAIves/tree/web/Models)
 
-## Utilisation en local :
-### Linux
-Téléchargez le projet et ajoutez un fichier ```api_key.txt``` contenant votre API key *OpenWeatherMap* dans le dossier **wAIves/Python/**
-<br>
-<br>
-Exécutez le script python ***manage_env.py*** :
-```
-$ python3 manage_env.py
-```
-Ouvrez le fichier ***index.html*** et surfez !
-
-### Windows :
-Téléchargez le projet et ajoutez un fichier ```api_key.txt``` contenant votre API key *OpenWeatherMap* dans le dossier **wAIves/Python/**
-<br>
-<br>
-Exécutez le script python ***manage_env.py*** depuis le dossier **wAIves/Python/**
-<br>
-<br>
-Ouvrez le fichier ***index.html*** et surfez !
-
-## Requirements :
-- [OpenWeatherMap](https://openweathermap.org/appid) API key (free)
-
-- | Python version | Compatibility |
-  |:-:|:-:|
-  | >= v3.10 | ✅ |
-  | >= v3.9 | ✅ |
-  | >= v3.8 | ✅ |
-  | >= v3.7 | ✅ |
-  | >= v3.6 | ✅ |
-  | >= v3.5 | ✅ |
-  | >= v2.7  | ✅ |
-  | v3.0.* | ❌ |
-  | v3.1.* | ❌ |
-  | v3.2.* | ❌ |
-  | v3.3.* | ❌ |
-  | v3.4.* | ❌ |
+## Utilisation en ligne :
+*En cours de développement*
+- Github Pages 🚧
+- Diminutions des problèmes de biais & réentrainement de models 🚧
+- Intégration des modèles Pytorch 🚧
 
 ## Sources des données météorologique :
 - NOAA
