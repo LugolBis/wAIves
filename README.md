@@ -1,50 +1,40 @@
 # wAIves 🏄
 
-## Objectif du projet :
-L'objectif de ce projet **personnel** est de développer des modèles d'**IA** capables de prédire des conditions de Surf à partir de données météorologiques.
-Il est donc ici question de Fouille de données, d'Apprentissage supervisé et de développement d'une application web.
+## Project Objective :
+The objective of this **personal** project is to develop **AI** models that predicting Surf conditions based on weather data.  
+This involves Data Mining, Supervised Learning, and Web Application development.
 
-## Étapes clées du projet :
-- **Fouille de données** : Text Scraping, Analyse et Formatage de données pour constituer un large dataset (4GO)
-- **Apprentissage supervisé** : Training de models à partir des librairies *Tensorflow* et *Pytorch*
-- **Développement web** : Mise en place de la logique d'un server (chaque branche du projet contient une implémentation différente de cette partie) et
-communication avec une API (*OpenWeatherMap*)
+## Key Project Steps :
+- **Data Mining** : Text Scraping, Data Analysis, and Formatting to build a large dataset (4GB)
+- **Supervised Learning** : Training models using *TensorFlow* and *PyTorch* libraries
+- **Web Development** : Setting up server logic (each project branch contains a different implementation of this part) and communication with an API (*OpenWeatherMap*)
 
-## Données météorologique :
-Les donnés météorologiques récoltées  à l'aide de *OpenWeatherMap* (et fournies aux modèles) sont les suivantes : **longitude**, **latitude**, **temperature**, **pressure**, **wind speed**, **wind direction**
-<br>
-La donnée inférée par les modèles : **wave height**
-<br>
-<br>
-Pour plus d'information regardez le dossier [Data](https://github.com/LugolBis/wAIves/tree/main/DATA)
+## Weather Data :
+The weather data collected using *OpenWeatherMap* (and provided to the models) includes: **longitude**, **latitude**, **temperature**, **pressure**, **wind speed**, **wind direction**.  
+The value inferred by the models: **wave height**.  
+For more information, see the [Data](https://github.com/LugolBis/wAIves/tree/main/DATA) folder.
 
 ## Models :
-De nombreux models ont été entrainés avec diverses variation de leurs paramètres d'entraînement (epochs, metrics, layers et datasets).
-<br>
-Ces tests ont permis de faire émerger les modèles fournissant les meilleurs résultats.
-<br>
-<br>
-Pour plus d'information regardez le dossier [Models](https://github.com/LugolBis/wAIves/tree/main/Models)
+Numerous models have been trained with various parameter variations (epochs, metrics, layers, and datasets).  
+These tests have identified the models providing the best results.  
+For more information, see the [Models](https://github.com/LugolBis/wAIves/tree/main/Models) folder.
 
-## Utilisation en local :
+## Local Usage :
 ### Linux
-Téléchargez le projet et ajoutez un fichier ```api_key.txt``` contenant votre API key *OpenWeatherMap* dans le dossier **wAIves/Python/**
-<br>
-<br>
-Exécutez le script python ***manage_env.py*** :
+Download the project and add an ```api_key.txt``` file containing your *OpenWeatherMap* API key in the **wAIves/Python/** folder.  
+
+Run the Python script ***manage_env.py*** :
 ```
 $ python3 manage_env.py
 ```
-Ouvrez le fichier ***index.html*** et surfez !
+Open the ***index.html*** file and start surfing !
 
 ### Windows :
-Téléchargez le projet et ajoutez un fichier ```api_key.txt``` contenant votre API key *OpenWeatherMap* dans le dossier **wAIves/Python/**
-<br>
-<br>
-Exécutez le script python ***manage_env.py*** depuis le dossier **wAIves/Python/**
-<br>
-<br>
-Ouvrez le fichier ***index.html*** et surfez !
+Download the project and add an ```api_key.txt``` file containing your *OpenWeatherMap* API key in the **wAIves/Python/** folder.  
+
+Run the Python script ***manage_env.py*** from the **wAIves/Python/** folder.  
+
+Open the ***index.html*** file and start surfing !
 
 ## Requirements :
 - [OpenWeatherMap](https://openweathermap.org/appid) API key (free)
@@ -64,7 +54,7 @@ Ouvrez le fichier ***index.html*** et surfez !
   | v3.3.* | ❌ |
   | v3.4.* | ❌ |
 
-## Sources des données météorologique :
+## Weather Data Sources :
 - NOAA
 - NDBC
 - Météo France
