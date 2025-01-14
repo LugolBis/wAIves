@@ -11,16 +11,22 @@
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
   <script src="data.js"></script>
   <script src="models.js"></script>
-  <script src="api_key.js"></script>
   <script src="main.js"></script>
   <script src="playground.js"></script>
+  <!--
+  <div class="menu">
+    <div class="menu a">
+      <img src="img/baniere_wAIves.png" class="menu a img"></img>
+      <h3>Test de la banière</h3>
+    </div>
+  </div>-->
   <div id="mainContainer" class="MyContainer">
     <h1>wAIves</h1>
-    <br><h3>Want to surf the perfect wave ?</h3>
+    <h3>Want to surf the perfect wave ?</h3>
       <h3>Don't let your surf session turn into a remake of <em>Brice de Nice</em> !</h3>
       <h3>Use wAIves to predict wave height 🌊🏄‍♂️</h3>
     <form id="mainForm">
-      <label>Sélectionnez un model:</label><br>
+      <label>Select a model:</label><br>
       <select id="modelMain">
         <option value="wAIves1v5.0" selected>wAIves1 v5.0</option>
         <option value="wAIves1v5.1">wAIves1 v5.1</option>
@@ -38,7 +44,7 @@
     <h4>Test models with custom data</h4>
     <h4>You can easily retrieve the data you need using the following website : <a href="https://meteotrend.com/" title="Russian weather website" target="_blank">MeteoTrend</a> .</h4>
     <form id="playgroundForm">
-      <label>Sélectionnez un model:</label><br>
+      <label>Select a model:</label><br>
       <select id="modelPlayground">
         <option value="wAIves1v5.0" selected>wAIves1 v5.0</option>
         <option value="wAIves1v5.1">wAIves1 v5.1</option>
@@ -56,9 +62,5 @@
     <br><button id="getPredictionPlayground" onclick="runPlayground()">Wave height prediction</button>
     <br><h3 id="resultatPlayground"></h3>
   </div>
-  <div id="botomPage">
-    <br><br><button onclick="window.location.href = 'credits.html'">Credits</button>
-  </div>
 </body>
-
 </html>

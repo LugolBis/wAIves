@@ -3,8 +3,31 @@
 body {
   margin : 0px;
   font-family: 'Arial', sans-serif;
-  background-color: #477292; /* Blanc cassé */
+  background-color: #789fc2; /* Blanc cassé */
   color: #333; /* Texte gris foncé */
+}
+
+.Baniere {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 0.5vh;
+  margin-top: 0px;
+  margin-bottom: 3vh;
+  margin-right: 0px;
+  margin-left: 0px;
+  padding: 2vw;
+  background-color: #8fcdff; /* Bleu gris */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  justify-content: flex-start;
+  align-items: flex-start;
+  image-rendering: optimizeQuality;
+  overflow: hidden; /* Optionnel, empêche le débordement si l'image dépasse */
+}
+
+.Baniere img {
+  height: 10vh; /* L'image occupe 100% de la hauteur du div */
+  width: auto; /* Préserve le ratio de l'image */
 }
 
 .MyContainer {
@@ -14,7 +37,7 @@ body {
   margin-left: auto;
   max-width: 75vw;
   padding: 2vw;
-  background-color: #789fc2; /* Bleu gris */
+  background-color: #8fcdff; /* Bleu gris */
   border-radius: 1vw;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -25,21 +48,21 @@ h1 {
   width: 33.33vw; /* 1/3 de la largeur de l'écran */
   height: auto; /* Ajuste la hauteur en fonction du contenu */
   text-align: center; /* Centrer le texte horizontalement */
-  color: #e3de9b; /* Couleur de fond pour tester */
+  color: #c3aa19; /* Couleur de fond pour tester */
   transition: all 0.1s ease; /* Transition douce lors des redimensionnements */
 }
 
 h2 {
-    color: #e3de9b;
+    color: #c3aa19;
 }
 
 h3, h4 {
-  color: #acd8ff; /* Bleu gris plus foncé */
+  color: #1e6da5; /* Bleu gris plus foncé */
 }
 
 label {
     font-size: 1.1em;
-    color: #e3de9b;
+    color: #5a7d9a;
 }
 
 select {
@@ -128,12 +151,6 @@ a:hover {
 }
 
 /* Static */
-#botomPage {
-  margin-top: 3vh;
-  margin-bottom: 3vh;
-  text-align: center;
-}
-
 #firstInstruction {
     color: #e3de9b;
 }
