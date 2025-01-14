@@ -1,36 +1,29 @@
 # wAIves 🏄
 
-## Objectif du projet :
-L'objectif de ce projet **personnel** est de développer des modèles d'**IA** capables de prédire des conditions de Surf à partir de données météorologiques.
-Il est donc ici question de Fouille de données, d'Apprentissage supervisé et de développement d'une application web.
+## Project Objective :
+The objective of this **personal** project is to develop **AI** models that predicting Surf conditions based on weather data.  
+This involves Data Mining, Supervised Learning, and Web Application development.
 
-## Étapes clées du projet :
-- **Fouille de données** : Text Scraping, Analyse et Formatage de données pour constituer un large dataset (4GO)
-- **Apprentissage supervisé** : Training de models à partir des librairies *Tensorflow* et *Pytorch*
-- **Développement web** : Mise en place de la logique d'un server (chaque branche du projet contient une implémentation différente de cette partie) et
-communication avec une API (*OpenWeatherMap*)
+## Key Project Steps :
+- **Data Mining** : Text Scraping, Data Analysis, and Formatting to build a large dataset (4GB)
+- **Supervised Learning** : Training models using *TensorFlow* and *PyTorch* libraries
+- **Web Development** : Setting up server logic (each project branch contains a different implementation of this part) and communication with an API (*OpenWeatherMap*)
 
-## Données météorologique :
-Les donnés météorologiques récoltées  à l'aide de *OpenWeatherMap* (et fournies aux modèles) sont les suivantes : **longitude**, **latitude**, **temperature**, **pressure**, **wind speed**, **wind direction**
-<br>
-La donnée inférée par les modèles : **wave height**
-<br>
-<br>
-Pour plus d'information regardez le dossier [Data](https://github.com/LugolBis/wAIves/tree/web/DATA)
+## Weather Data :
+The weather data collected using *OpenWeatherMap* (and provided to the models) includes: **longitude**, **latitude**, **temperature**, **pressure**, **wind speed**, **wind direction**.  
+The value inferred by the models: **wave height**.  
+For more information, see the [Data](https://github.com/LugolBis/wAIves/tree/main/DATA) folder.
 
 ## Models :
-De nombreux models ont été entrainés avec diverses variation de leurs paramètres d'entraînement (epochs, metrics, layers et datasets).
-<br>
-Ces tests ont permis de faire émerger les modèles fournissant les meilleurs résultats.
-<br>
-<br>
-Pour plus d'information regardez le dossier [Models](https://github.com/LugolBis/wAIves/tree/web/Models)
+Numerous models have been trained with various parameter variations (epochs, metrics, layers, and datasets).  
+These tests have identified the models providing the best results.  
+For more information, see the [Models](https://github.com/LugolBis/wAIves/tree/main/Models) folder.
 
-## Utilisation en ligne :
-*En cours de développement*
+## Online Usage :
+*Under development*
 - Github Pages 🚧
-- Diminutions des problèmes de biais & réentrainement de models 🚧
-- Intégration des modèles Pytorch 🚧
+- Reducing bias issues & retraining models 🚧
+- Integration of PyTorch models 🚧
 
 ## Sources des données météorologique :
 - NOAA
