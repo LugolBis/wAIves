@@ -39,13 +39,13 @@ function transformWeatherData(data) {
     return array_
 }
 
-async function getWeatherData(api_key, location) {
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&appid=${api_key}`;
+async function getWeatherData(location) {
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&appid=0a216b54f594e070778d7d8b8390ac06`;
     
     try {
         const response = await fetch(url); // Utilisation de fetch pour la requête
         if (!response.ok) {
-            const response_test = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${"Sagres,PT"}&appid=${api_key}`);
+            const response_test = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${"Sagres,PT"}&appid=0a216b54f594e070778d7d8b8390ac06`);
             if (!response_test.ok) {
                 alert("wAIves fails to connect to server hosting weather data.\nPlease try again later.") ;
             }
@@ -102,10 +102,9 @@ async function run() {
     const modelName = document.getElementById('modelMain').value ;
     const inputValue = document.getElementById('input').value ;
     const resultat = document.getElementById('resultat') ;
-    const apiKey = openWeatherMap_key;
 
     const location = await getLocation(inputValue);
-    const weather = await getWeatherData(apiKey,location) ;
+    const weather = await getWeatherData(location) ;
 
     const inputArray = transformWeatherData(weather) ;
     const response = await predictWithModel(inputArray,modelName) ;
