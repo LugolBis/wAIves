@@ -19,6 +19,9 @@ Numerous models have been trained with various parameter variations (epochs, met
 These tests have identified the models providing the best results.  
 For more information, see the [Models](https://github.com/LugolBis/wAIves/tree/main/Models) folder.
 
+## Online usage :
+### [wAIves](https://lugolbis.github.io/wAIves/)
+
 ## Local Usage :
 ### Linux
 Download the project and add an ```api_key.txt``` file containing your *OpenWeatherMap* API key in the **wAIves/Python/** folder.  
