@@ -40,7 +40,7 @@ function transformWeatherData(data) {
 }
 
 async function getWeatherData(location) {
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&appid=0a216b54f594e070778d7d8b8390ac06`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&appid=0a216b54f594e070778d7d8b8390ac06`;
     
     try {
         const response = await fetch(url); // Utilisation de fetch pour la requête
