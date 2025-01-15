@@ -20,10 +20,7 @@ These tests have identified the models providing the best results.
 For more information, see the [Models](https://github.com/LugolBis/wAIves/tree/main/Models) folder.
 
 ## Online Usage :
-*Under development*
-- Github Pages 🚧
-- Reducing bias issues & retraining models 🚧
-- Integration of PyTorch models 🚧
+### [wAIves](https://lugolbis.github.io/wAIves/)
 
 ## Sources des données météorologique :
 - NOAA
