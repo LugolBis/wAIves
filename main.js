@@ -77,6 +77,7 @@ async function predictWithModel(inputArray, modelName) {
 async function run() {
     const modelName = document.getElementById('modelMain').value ;
     const resultat = document.getElementById('resultat') ;
+    resultat.innerHTML = "Processing...";
 
     const location = await getLocation();
     const weather = await getWeatherData(location);
