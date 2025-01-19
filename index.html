@@ -18,19 +18,18 @@
     <a href="#mainContainer">
       <img src="img/wAIves.png" width="160px" height="70px"></img>
     </a>
-    <img src="img/space.png" width="250px" height="70px"></img>
+    <img src="img/space.png" width="160px" height="70px"></img>
     <a href="#playgroundContainer">
       <img src="img/playground.png" width="160px" height="70px"></img>
     </a>
-    <img src="img/space.png" width="250px" height="70px"></img>
+    <img src="img/space.png" width="160px" height="70px"></img>
     <a href="https://github.com/LugolBis/wAIves" target="_blank">
       <img src="img/github.png" width="160px" height="70px"></img>
     </a>
-    <img src="img/space.png" width="250px" height="70px"></img>
+    <img src="img/space.png" width="160px" height="70px"></img>
     <a href="https://github.com/LugolBis/wAIves#local-usage-" target="_blank">
       <img src="img/download.png" width="160px" height="70px"></img>
     </a>
-    <img src="img/space.png" width="250px" height="70px"></img>
   </div>
   <div id="mainContainer" class="MyContainer">
     <h1>w<span style="color: #1e6da5;">AI</span>ves</h1>
@@ -46,7 +45,11 @@
       </select><br>
     </form>
     <br><h4>Enter the location where you want to surf :</h4>
-    <input id="input" placeholder="City, Country" value=""></input>
+    <div class="autocomplete-container">
+      <input type="text" id="countryInput" placeholder="Country">
+      <div id="autocomplete-results" class="autocomplete-results"></div> 
+      <input type="text" id="cityInput" placeholder="City">
+    </div>
     <br><button id="getPrediction" onclick="run()">Wave height prediction</button>
     <br><h3 id="resultat"></h3>
   </div>
@@ -74,5 +77,6 @@
     <br><button id="getPredictionPlayground" onclick="runPlayground()">Wave height prediction</button>
     <br><h3 id="resultatPlayground"></h3>
   </div>
+  <script src="events.js"></script>
 </body>
 </html>

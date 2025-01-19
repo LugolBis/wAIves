@@ -1,33 +1,9 @@
 // Main 
 
-async function getLocation(cityCountry) {
-    try {
-        // Expression régulière pour extraire la ville et le pays
-        const regex = /^\s*([\w\s'-]+)\s*,\s*([\w\s'-]+)\s*$/;
-        const match = cityCountry.match(regex);
-        const resultat = document.getElementById('resultat');
-
-        if (!match) {
-            resultat.innerHTML = "Incorrect format. Please check the entry.";
-            return "Incorrect format. Please check the entry.";
-        }
-
-        const city = match[1].trim();
-        const country = match[2].trim();
-
-        // Obtenir l'abréviation du pays
-        const countryCode = countriesAbbreviation[country];
-
-        if (!countryCode) {
-            resultat.innerHTML = "Country abbreviation not found. Please check the country entered.";
-            return "Abréviation du pays introuvable.";
-        }
-
-        return `${city},${countryCode}`;
-    }
-    catch (error) {
-        console.log(`Error -- getLocation() : ${error}`) ; return `${error}` ;
-    }
+async function getLocation() {
+    const country = countryInput.value;
+    const city = document.getElementById("cityInput").value;
+    return `${city},${countriesAbbreviation[country]}`;
 }
 
 function transformWeatherData(data) { 
@@ -50,10 +26,10 @@ async function getWeatherData(location) {
                 alert("wAIves fails to connect to server hosting weather data.\nPlease try again later.") ;
             }
             else {
-                alert("Weather data for your chosen location is not available.\nHowever, you can use the Playground space to manually enter weather data.") ;
+                alert(`Weather data for your chosen location is not available.\nHowever, you can use the Playground space below to manually enter weather data.`);
             }
             
-            throw new Error("Erreur lors de la récupération des données.");
+            return null;
         }
         const data = await response.json(); console.log(data);
         return data;
@@ -94,19 +70,26 @@ async function predictWithModel(inputArray, modelName) {
         return hauteurM;
     } catch (error) {
         console.error("Error in model prediction: ", error); 
-        return error ;
+        return null;
     }
 }
 
 async function run() {
     const modelName = document.getElementById('modelMain').value ;
-    const inputValue = document.getElementById('input').value ;
     const resultat = document.getElementById('resultat') ;
 
-    const location = await getLocation(inputValue);
-    const weather = await getWeatherData(location) ;
+    const location = await getLocation();
+    const weather = await getWeatherData(location);
+    if (weather===null) {
+        resultat.innerHTML = `Error when trying to request weather data to OpenWeatherMap.`;
+        return null;
+    }
 
-    const inputArray = transformWeatherData(weather) ;
-    const response = await predictWithModel(inputArray,modelName) ;
+    const inputArray = transformWeatherData(weather);
+    const response = await predictWithModel(inputArray,modelName);
+    if (response===null) {
+        resultat.innerHTML = `Error when trying to use the model. Try with an other model or again later.`;
+        return null;
+    }
     resultat.innerHTML = `${response} m`;
 }
