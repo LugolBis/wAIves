@@ -44,9 +44,9 @@ async function predictWithModel(inputArray, modelName) {
 
         let modelSelected = null;
         switch (modelName) {
-            case "wAIves1v5.0": modelSelected = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@web/Models/wAIves1v5.0/model.json";
-            case "wAIves1v5.1": modelSelected = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@web/Models/wAIves1v5.1/model.json";
-            case "wAIves1v5.2": modelSelected = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@web/Models/wAIves1v5.2/model.json";
+            case "wAIves1v5.0": modelSelected = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@web/Models/wAIves1v5.0/model.json";break;
+            case "wAIves1v5.1": modelSelected = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@web/Models/wAIves1v5.1/model.json";break;
+            case "wAIves1v5.2": modelSelected = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@web/Models/wAIves1v5.0/model.json";break;
             default: console.log(`Error input Name : '${modelName}'`);modelSelected = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@web/Models/wAIves1v5.0/model.json";
             
         }
@@ -83,7 +83,7 @@ async function run() {
     const inputArray = transformWeatherData(weather);
     const response = await predictWithModel(inputArray,modelName);
     if (response===null) {
-        resultat.innerHTML = `Error when trying to use the model. Try with an other model or again later.`;
+        resultat.innerHTML = `Error when trying to use the model. Try with an other model or try again later.`;
         return null;
     }
     resultat.innerHTML = `${response} m`;
