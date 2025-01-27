@@ -44,25 +44,19 @@ async function predictWithModel(inputArray, modelName) {
 
         let modelSelected = null;
         switch (modelName) {
-            case "wAIves1v5.0": modelSelected = wAIves1v5_0;
-            case "wAIves1v5.1": modelSelected = wAIves1v5_1;
-            case "wAIves1v5.2": modelSelected = wAIves1v5_2;
-            default: console.log(`${modelName}`);
+            case "wAIves1v5.0": modelSelected = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@web/Models/wAIves1v5.0/model.json";
+            case "wAIves1v5.1": modelSelected = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@web/Models/wAIves1v5.1/model.json";
+            case "wAIves1v5.2": modelSelected = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@web/Models/wAIves1v5.2/model.json";
+            default: console.log(`Error input Name : '${modelName}'`);modelSelected = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@web/Models/wAIves1v5.0/model.json";
+            
         }
 
-        const modelArtifact = {
-            modelTopology: modelSelected.modelTopology,
-            weightData: modelSelected.weightData
-        };
-        const model = await tf.loadLayersModel(tf.io.fromMemory(modelArtifact));
+        model = await tf.loadLayersModel(modelSelected);
         console.log(inputArray) ;console.log("Le modèle à été chargé !") ;
-        // Convert the input array to a tensor
-        const inputTensor = tf.tensor2d([inputArray]);
 
-        // Make a prediction
+        const inputTensor = tf.tensor2d([inputArray]);
         const prediction = model.predict(inputTensor);
 
-        // Get the prediction value from the tensor
         const predictionValue = await prediction.data();
         let hauteurM = Math.round(predictionValue[0] * 10) / 10 ;
         hauteurM = Math.abs(hauteurM) ;
