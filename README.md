@@ -22,7 +22,7 @@ For more information, see the [Models](https://github.com/LugolBis/wAIves/tree/m
 ## Online Usage :
 ### [wAIves](https://lugolbis.github.io/wAIves/)
 
-## Sources des données météorologique :
+## Sources of meteorological data :
 - NOAA
 - NDBC
 - Météo France
