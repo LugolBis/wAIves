@@ -16,11 +16,12 @@ body {
 .autocomplete-results {
   position: absolute;
   background-color: #fff;
-  max-height: 150px;
+  max-height: 300px;
   overflow-y: auto;
   z-index: 1000;
   width: 50%;
   left: 50%;
+  font-size: 240%;
   transform: translateX(-50%);
   align-items: center;
 }
@@ -50,7 +51,7 @@ body {
 }
 
 .menu a img {
-  width: 50%; /* Chaque image prend 20% de la largeur de l'écran */
+  width: 60%; /* Chaque image prend 20% de la largeur de l'écran */
   height: auto; /* Maintient les proportions des images */
   margin: 0; /* Supprime les marges inutiles */
 }
@@ -95,17 +96,21 @@ body {
 }
 
 .MyContainer label {
-  font-size: 240%;
+  font-size: 250%;
+  margin-right: 3%;
+  margin-left: 3%;
   color: #5a7d9a;
 }
 
 .MyContainer select {
-  margin: 5px 0;
+  /*margin: 5px 0;*/
+  margin-right: 3%;
+  margin-left: 3%;
   padding: 5px;
   width: 20%;
   border: 1px solid #b0bec5;
   border-radius: 5px;
-  font-size: 155%;
+  font-size: 250%;
   background-color: #ffffff;
   color: #333;
 }
@@ -117,12 +122,15 @@ body {
 
 /* Inputs */
 .MyContainer input {
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 3%;
+  margin-left: 3%;
   padding: 10px;
   width: 50%;
   border: 1px solid #b0bec5;
   border-radius: 5px;
-  font-size: 155%;
+  font-size: 250%;
   background-color: #ffffff; /* Blanc */
   color: #333;
 }
@@ -138,7 +146,7 @@ body {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  font-size: 160%;
+  font-size: 250%;
   margin-top: 1%;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
