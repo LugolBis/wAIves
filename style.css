@@ -1,197 +1,240 @@
 /* ========= BASE STYLES ========= */
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #789fc2;
-  color: #333;
-  line-height: 1.4;
-}
-
-a {
-  color: #5a7d9a;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-a:hover {
-  text-decoration: underline;
-  opacity: 0.9;
-}
-
-/* ========= MENU & IMAGES ========= */
-.menu {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #8fcdff;
-  padding: 10px 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.menu a {
-  flex: 0 0 auto;
-  min-width: 80px;
-  padding: 0 8px;
-  transition: transform 0.2s ease;
-}
-
-.menu a:hover {
-  transform: scale(1.05);
-}
-
-.menu a img {
-  width: 100%;
-  height: auto;
-  min-width: 70px;
-  max-width: 160px;
-  display: block;
-}
-
-/* ========= CONTAINERS ========= */
-.MyContainer {
-  margin: 2% 2.5%;
-  padding: 2%;
-  background-color: #8fcdff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-/* ========= TYPOGRAPHY ========= */
-.MyContainer h1 {
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  color: #c3aa19;
-  margin: 20px 0;
-  text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
-}
-
-.MyContainer h2 {
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-  color: #c3aa19;
-  margin: 15px 0;
-}
-
-.MyContainer h3 {
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-  color: #1e6da5;
-  margin: 10px 3%;
-}
-
-.MyContainer h4 {
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
-  color: #1e6da5;
-  margin: 12px 3%;
-}
-
-/* ========= FORM ELEMENTS ========= */
-.MyContainer label {
-  font-size: clamp(1.2rem, 1.4vw, 1.4rem);
-  margin: 12px 3%;
-  display: inline-block;
-}
-
-.MyContainer input,
-.MyContainer select {
-  font-size: clamp(1.1rem, 1.3vw, 1.3rem);
-  padding: 12px;
-  width: 80%;
-  max-width: 500px;
-  margin: 10px 0;
-  border: 1px solid #b0bec5;
-  border-radius: 10px;
-  background-color: #fff;
-}
-
-.MyContainer input::placeholder {
-  color: #888;
-  opacity: 0.8;
-}
-
-.autocomplete-container {
-  position: relative;
-  width: 100%;
-  margin: 15px 0;
-}
-
-.autocomplete-results {
-  font-size: 1.1rem;
-  width: 80%;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-/* ========= BUTTONS ========= */
-button {
-  background-color: #5a7d9a;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 10px;
-  font-size: clamp(1.1rem, 1.3vw, 1.3rem);
-  margin: 15px 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background-color: #4a657d;
-  transform: scale(1.05);
-}
-
-button:active {
-  transform: scale(0.98);
-}
-
-/* ========= MEDIA QUERIES ========= */
-@media (max-width: 1200px) {
-  .menu a {
-    min-width: 75px;
-    padding: 0 6px;
-  }
-}
-
-@media (max-width: 768px) {
-  .menu a {
-    min-width: 70px;
-    padding: 0 5px;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #789fc2;
+    color: #333;
+    line-height: 1.4;
   }
   
-  .MyContainer {
-    margin: 3% 2%;
-    padding: 3%;
+  a {
+    color: #5a7d9a;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
   }
   
-  .MyContainer input,
-  .MyContainer select {
-    width: 90%;
-    padding: 10px;
+  a:hover {
+    text-decoration: underline;
+    opacity: 0.9;
   }
-}
-
-@media (max-width: 480px) {
+  
+  /* ========= MENU & IMAGES ========= */
   .menu {
-    padding: 10px 2px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #8fcdff;
+    padding: 10px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   .menu a {
-    min-width: 65px;
-    padding: 0 3px;
+    flex: 0 0 auto;
+    min-width: 80px;
+    padding: 0 8px;
+    transition: transform 0.2s ease;
   }
   
+  .menu a:hover {
+    transform: scale(1.05);
+  }
+  
+  .menu a img {
+    width: 100%;
+    height: auto;
+    min-width: 70px;
+    max-width: 160px;
+    display: block;
+  }
+  
+  /* ========= CONTAINERS ========= */
+  .MyContainer {
+    margin: 2% 2.5%;
+    padding: 2%;
+    background-color: #8fcdff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* ========= TYPOGRAPHY ========= */
   .MyContainer h1 {
-    font-size: 2.2rem;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    color: #c3aa19;
+    margin: 20px 0;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+  }
+  
+  .MyContainer h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: #c3aa19;
+    margin: 15px 0;
+  }
+  
+  .MyContainer h3 {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: #1e6da5;
+    margin: 10px 3%;
+  }
+  
+  .MyContainer h4 {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: #1e6da5;
+    margin: 12px 3%;
+  }
+  
+  /* ========= FORM ELEMENTS ========= */
+  .MyContainer label {
+    font-size: clamp(1.3rem, 1.5vw, 1.5rem);
+    margin: 15px 3%;
+    display: inline-block;
   }
   
   .MyContainer input,
   .MyContainer select {
-    width: 95%;
-    padding: 8px;
-    font-size: 1.1rem;
+    font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+    padding: 12px;
+    width: 80%;
+    max-width: 500px;
+    margin: 10px 0;
+    border: 1px solid #b0bec5;
+    border-radius: 10px;
+    background-color: #fff;
   }
   
-  button {
-    width: 90%;
-    padding: 10px 20px;
+  .MyContainer input::placeholder {
+    color: #888;
+    opacity: 0.8;
   }
-}
+  
+  .autocomplete-container {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+    text-align: center; /* Centrage du contenu */
+  }
+
+  #countryInput, #cityInput {
+    display: block;
+    width: 80%;
+    max-width: 500px;
+    margin: 10px auto;
+  }
+
+  .autocomplete-results {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 500px;
+    max-height: 250px; /* Hauteur maximale avant scroll */
+    overflow-y: auto; /* Scrollbar verticale si besoin */
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 10px 10px;
+    z-index: 1000;
+  }
+  
+  .autocomplete-results div {
+    font-size: clamp(1.1rem, 1.3vw, 1.3rem); /* Même taille que les inputs */
+    padding: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .autocomplete-results div:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* ========= BUTTONS ========= */
+  button {
+    background-color: #5a7d9a;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+    margin: 15px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #4a657d;
+    transform: scale(1.05);
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+  
+  /* ========= MEDIA QUERIES ========= */
+  @media (max-width: 1200px) {
+    .menu a {
+      min-width: 75px;
+      padding: 0 6px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .menu a {
+      min-width: 70px;
+      padding: 0 5px;
+    }
+    
+    .MyContainer {
+      margin: 3% 2%;
+      padding: 3%;
+    }
+    
+    .MyContainer input,
+    .MyContainer select {
+      width: 90%;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .menu {
+      padding: 10px 2px;
+    }
+    
+    .menu a {
+      min-width: 65px;
+      padding: 0 3px;
+    }
+    
+    .MyContainer h1 {
+      font-size: 2.2rem;
+    }
+    
+    .MyContainer input,
+    .MyContainer select {
+      width: 95%;
+      padding: 8px;
+    }
+
+    .MyContainer label,
+    .MyContainer input,
+    .MyContainer select,
+    .MyContainer button {
+        font-size: 1.3rem !important; 
+    }
+    
+    .MyContainer input,
+    .MyContainer select {
+        padding: 10px; 
+    }
+    
+    button {
+        width: 90%;
+        padding: 12px 24px;
+    }
+
+    .autocomplete-results div {
+        font-size: 1.3rem;
+    }
+  }
