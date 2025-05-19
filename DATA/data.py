@@ -1,4 +1,6 @@
-# Data Meteo 
+"""
+Meteorological Data
+"""
 
 import os
 import json
@@ -475,8 +477,6 @@ Météo France - Solution pour récupérer du data sur les vagues :
 lien vers la page de présentation : https://donneespubliques.meteofrance.fr/?fond=produit&id_produit=95&id_rubrique=32 
 Requête pour obtenir des données : https://donneespubliques.meteofrance.fr/?fond=donnee_libre&prefixe=Txt%2FMarine%2FArchive%2Fmarine&extension=csv.gz&date=199601
 lien vers le pdf décrivant les champs : https://donneespubliques.meteofrance.fr/client/document/doc_parametres_ship_169.pdf
-
-ECMWF - C'est payant !
 
 NDBC - Solution pour récupérer du data sur les vagues :
 lien de la page pour rechercher les stations : https://www.ndbc.noaa.gov/historical_data.shtml#swdir
