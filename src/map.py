@@ -11,7 +11,7 @@ def show_map(longitudes: list[float], latitudes: list[float]):
         lat = latitudes,
         mode = 'markers',
         marker = dict(
-            size = 20,
+            size = 10,
             color = 'blue'
         )
     ))

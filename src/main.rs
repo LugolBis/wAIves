@@ -6,7 +6,21 @@ use std::env;
 use logs::*;
 
 fn main() {
-    println!("Ready to surf ?!");
+    println!("Hello world !");
+}
+
+/// Function already used to clean the file that store coordinates
+#[allow(unused)]
+fn clean_coordinates() {
+    use coordinates;
+
+    if let Ok(current_directory) = env::current_dir() {
+        let file_path = format!("{}/DATA/Dataset/coordinates.json", current_directory.display());
+        coordinates::filter_outlier(&file_path)
+    }
+    else {
+        log("Issue with the current directory.".to_string())
+    }
 }
 
 /// Function already used to extract the coordinates from the dataset

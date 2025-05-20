@@ -40,17 +40,7 @@ pub fn extract_coordinates(folder_path: &str) {
         }
     }
 
-    if let Ok(content) = to_string(&result) {
-        match OpenOptions::new().create(true).truncate(true).write(true).open(&save_path) {
-            Ok(mut file) => {
-                let _ = file.write_all(content.as_bytes());
-            }
-            Err(error) => { log(format!("\nERROR : extract_coordinates() : {} in the following file : {}",error,save_path.display())); }
-        }
-    }
-    else {
-        log(String::from("\nERROR : extract_coordinates() : can't convert result into string"));
-    }
+    dump_json(&save_path, &result);
 }
 
 fn parse_file(coordinates: &mut HashSet<(String,String)>, file_path: PathBuf) {
@@ -85,4 +75,67 @@ fn parse_file(coordinates: &mut HashSet<(String,String)>, file_path: PathBuf) {
         else { log(format!("\nERROR : can't deserialize the file : {}",file_path.display())) }
     }
     else { log(format!("\nERROR : can't open the file : {}",file_path.display())) }
+}
+
+#[allow(unused)]
+const OUTLIERS_STATIONS: [(f64,f64);12] = [
+    (13.289, 20.0), (10.051, -125.032), (13.729, -144.668), (0.0, -153.913), (7.079, 171.384),
+    (15.268, 145.662), (13.683, 144.816), (13.354, 144.788), (59.94, -39.52), (7.081,158.244),
+    (7.63,134.671), (-14.273,-170.501)
+];
+
+#[allow(unused)]
+pub fn filter_outlier(file_path: &str) {
+    let file_path = PathBuf::from(file_path);
+    let mut filtered_data: Vec<f64> = Vec::new();
+
+    let interval = |x:f64,y:f64| {
+        30.000 <= x && x <= 50.000 && -74.000 <= y && y <= -60.000 
+    };
+
+    if let Ok(content) = fs::read_to_string(&file_path) {
+        if let Ok(json_object) = Value::from_str(&content) {
+            match json_object {
+                Value::Array(vector) => {
+                    let n = vector.len()-1;
+                    for index in (0..n).step_by(2) {
+                        let (longitude, latitude) = (&vector[index], &vector[index+1]);
+                        if let (Some(x), Some(y)) = (longitude.as_f64(), latitude.as_f64()) {
+                            let (x, y) = (custom_round(x), custom_round(y));
+                            if !OUTLIERS_STATIONS.contains(&(y,x)) && !interval(x,y) {
+                                filtered_data.push(x);
+                                filtered_data.push(y);
+                            }
+                            else {
+                                log(format!("\nSuccessfully filter the station : ({},{})",x,y))
+                            }
+                        }
+                    }
+
+                    dump_json(&file_path, &filtered_data);
+                },
+                _ => {
+                    log(format!("\nERROR {} - the JSON object doesn't have the expected format.", dbg!(file_path.display())))
+                }
+            }
+        }
+        else { log(format!("\nERROR {} - can't deserialize the content.", dbg!(file_path.display()))) }
+    }
+    else { log(format!("\nERROR {} - can't read the file.", dbg!(file_path.display()))) }
+}
+
+fn custom_round(value: f64) -> f64 {
+    (value * 1000.0).round() / 1000.0
+}
+
+fn dump_json(file_path: &PathBuf, vector: &Vec<f64>) {
+    if let Ok(content) = to_string(&vector) {
+        match OpenOptions::new().create(true).truncate(true).write(true).open(&file_path) {
+            Ok(mut file) => {
+                let _ = file.write_all(content.as_bytes());
+            }
+            Err(error) => { log(format!("\nERROR : {} in the following file : {}",error,file_path.display())); }
+        }
+    }
+    else { log(format!("\nERROR : can't convert serialize the vector - {}",file_path.display())); }
 }
