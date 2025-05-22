@@ -1,3 +1,5 @@
+//! This module contains functions to improve the storage of the dataset and adding more data by parsing text files.
+
 use std::fs::OpenOptions;
 use std::io::{Write, Read};
 use std::fs::{self, DirEntry};

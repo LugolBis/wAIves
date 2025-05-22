@@ -2,14 +2,32 @@ mod dataset;
 mod logs;
 mod coordinates;
 mod clustering;
+mod split_dataset;
 
 use std::{env, process::Command};
 use logs::*;
 
 fn main() {
-    clustering_coordinates();
+    println!("Hello world !");
 }
 
+/// Function already used to split the dataset
+#[allow(unused)]
+fn split_dataset() {
+    use split_dataset;
+
+    if let Ok(current_directory) = env::current_dir() {
+        let cluster_path = format!("{}/DATA/Clusters/clusters98.json", current_directory.display());
+        let data_folder = format!("{}/DATA/Dataset", current_directory.display());
+        let save_folder = format!("{}/DATA/DatasetC", current_directory.display());
+        split_dataset::split_dataset(&cluster_path,&data_folder,&save_folder);
+    }
+    else {
+        log("Issue with the current directory.".to_string())
+    }
+}
+
+/// Function already used to create the clusters based on the coordinates of the stations
 #[allow(unused)]
 fn clustering_coordinates() {
     use clustering;

@@ -2,5 +2,6 @@
 /DATA/Dataset
 /DATA/Clusters
 /DATA/Dataset.tar.xz
+/DATA/DatasetC/*.json
 /target
 logs.txt

@@ -112,10 +112,10 @@ impl Centroid {
 }
 
 const INITIAL_CENTROIDS: [Centroid;9] = [
-    Centroid(Region::UE,Coordinate(36.0,25.0)), Centroid(Region::AF,Coordinate(22.0,38.0)), Centroid(Region::TH,Coordinate(20.0,-157.0)),
-    Centroid(Region::LAKE,Coordinate(44.0,-83.5)), Centroid(Region::UsaEst,Coordinate(37.0, -67.0)),
-    Centroid(Region::GolfMexico,Coordinate(29.0, -89.0)), Centroid(Region::CARIBBEAN,Coordinate(18.0, -65.0)),
-    Centroid(Region::UsaWest,Coordinate(39.0, 123.0)), Centroid(Region::UsaNorth,Coordinate(60.0, -148.0))
+    Centroid(Region::UE,Coordinate(25.0, 36.0)), Centroid(Region::AF,Coordinate(38.0, 22.0)), Centroid(Region::TH,Coordinate(-157.0, 20.0)),
+    Centroid(Region::LAKE,Coordinate(-83.5, 44.0)), Centroid(Region::UsaEst,Coordinate(-67.0, 37.0)),
+    Centroid(Region::GolfMexico,Coordinate(-89.0, 29.0)), Centroid(Region::CARIBBEAN,Coordinate(-65.0, 18.0)),
+    Centroid(Region::UsaWest,Coordinate(123.0, 39.0)), Centroid(Region::UsaNorth,Coordinate(-148.0, 60.0))
 ];
 
 pub fn clustering(file_path: &str, clusters_path: &str, centroids_path: &str, number_iterations: u64) {
