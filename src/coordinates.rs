@@ -60,7 +60,7 @@ fn parse_file(coordinates: &mut HashSet<(String,String)>, file_path: PathBuf) {
                                 }
                                 else { log(format!("\nERROR : ({:?}, {:?}) can't be converted as f64 : {}",x,y,file_path.display())) }
                             },
-                            _ => { log(format!("\nERROR : longitude and latitude aren't deserialized Value are not Number : {}",file_path.display())) }
+                            _ => { log(format!("\nERROR : longitude and latitude deserialized Value are not Number : {}",file_path.display())) }
                         }
                         (index_lon, index_lat) = (index_lon+7, index_lat+7);
                     }
@@ -124,7 +124,7 @@ pub fn filter_outlier(file_path: &str) {
     else { log(format!("\nERROR {} - can't read the file.", dbg!(file_path.display()))) }
 }
 
-fn custom_round(value: f64) -> f64 {
+pub fn custom_round(value: f64) -> f64 {
     (value * 1000.0).round() / 1000.0
 }
 

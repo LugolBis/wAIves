@@ -1,12 +1,27 @@
 mod dataset;
 mod logs;
 mod coordinates;
+mod clustering;
 
 use std::env;
 use logs::*;
 
 fn main() {
-    println!("Hello world !");
+    clustering_coordinates();
+}
+
+#[allow(unused)]
+fn clustering_coordinates() {
+    use clustering;
+
+    if let Ok(current_directory) = env::current_dir() {
+        let file_path = format!("{}/DATA/Dataset/coordinates.json", current_directory.display());
+        let save_path = format!("{}/DATA/Dataset/clusters.json", current_directory.display());
+        clustering::clustering(&file_path,&save_path)
+    }
+    else {
+        log("Issue with the current directory.".to_string())
+    }
 }
 
 /// Function already used to clean the file that store coordinates
