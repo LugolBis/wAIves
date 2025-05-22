@@ -3,7 +3,7 @@ mod logs;
 mod coordinates;
 mod clustering;
 
-use std::env;
+use std::{env, process::Command};
 use logs::*;
 
 fn main() {
@@ -13,11 +13,20 @@ fn main() {
 #[allow(unused)]
 fn clustering_coordinates() {
     use clustering;
+    use std::thread;
 
     if let Ok(current_directory) = env::current_dir() {
         let file_path = format!("{}/DATA/Dataset/coordinates.json", current_directory.display());
-        let save_path = format!("{}/DATA/Dataset/clusters.json", current_directory.display());
-        clustering::clustering(&file_path,&save_path)
+        for iterations in 0..100 {
+            let clusters_path = format!("{}/DATA/Clusters/clusters{}.json", current_directory.display(),iterations);
+            let centroids_path = format!("{}/DATA/Clusters/centroids{}.json", current_directory.display(),iterations);
+            clustering::clustering(&file_path, &clusters_path, &centroids_path, iterations);
+            
+            let img_path = format!("{}/DATA/Clusters/img/clusters{}.png", current_directory.display(),iterations);
+            thread::spawn(move || {
+                Command::new("python3").args(["./src/map.py", &clusters_path, &centroids_path, &img_path]).spawn().unwrap().wait().unwrap();
+            });
+        }
     }
     else {
         log("Issue with the current directory.".to_string())

@@ -118,7 +118,7 @@ const INITIAL_CENTROIDS: [Centroid;9] = [
     Centroid(Region::UsaWest,Coordinate(39.0, 123.0)), Centroid(Region::UsaNorth,Coordinate(60.0, -148.0))
 ];
 
-pub fn clustering(file_path: &str, save_path: &str) {
+pub fn clustering(file_path: &str, clusters_path: &str, centroids_path: &str, number_iterations: u64) {
     let file_path = PathBuf::from(file_path);
 
     if let Ok(content) = fs::read_to_string(&file_path) {
@@ -131,22 +131,20 @@ pub fn clustering(file_path: &str, save_path: &str) {
                         match (longitude, latitude) {
                             (Value::Number(x), Value::Number(y)) => {
                                 if let (Some(x), Some(y)) = (x.as_f64(), y.as_f64()) {
-                                    //let (x,y) = (custom_round(x), custom_round(y));
+                                    let (x,y) = (custom_round(x), custom_round(y));
                                     coordinates.push(Coordinate(x,y));
                                 }
                                 else { log(format!("\nERROR : ({:?}, {:?}) can't be converted as f64 : {}",x,y,file_path.display())) }
                             },
                             _ => { log(format!("\nERROR : longitude and latitude deserialized Value are not Number : {}",file_path.display())) }
                         }
-                        (index_lon, index_lat) = (index_lon+7, index_lat+7);
+                        (index_lon, index_lat) = (index_lon+2, index_lat+2);
                     }
 
-                    if let Ok((clusters, centroids)) = kmeans(coordinates) {
-                        let save_path = PathBuf::from(save_path);
-                        dump_json(&save_path, &clusters);
-
-                        let save_path = PathBuf::from("centroids.json");
-                        dump_json_centroid(&save_path, &centroids);
+                    if let Ok((clusters, centroids)) = kmeans(coordinates, number_iterations) {
+                        dump_json(&PathBuf::from(clusters_path), &clusters);
+                        
+                        dump_json_centroid(&PathBuf::from(centroids_path), &centroids);
                     }
                     else { log(format!("\nERROR : {} the kmeans failed.",file_path.display())) }
                 },
@@ -158,7 +156,7 @@ pub fn clustering(file_path: &str, save_path: &str) {
     else { log(format!("\nERROR : {} when try to read the content", file_path.display())) }
 }
 
-fn kmeans(vector: Vec<Coordinate>) -> Result<(Vec<Vec<f64>>, Vec<String>), ()> {
+fn kmeans(vector: Vec<Coordinate>, iterations: u64) -> Result<(Vec<Vec<f64>>, Vec<String>), ()> {
     let mut hashmap: HashMap<Centroid, Vec<Coordinate>> = HashMap::new();
     for centroid in INITIAL_CENTROIDS {
         hashmap.insert(centroid, vec![]);
@@ -170,9 +168,16 @@ fn kmeans(vector: Vec<Coordinate>) -> Result<(Vec<Vec<f64>>, Vec<String>), ()> {
     let num_threads = thread::available_parallelism().map_err(|_|())?.get();
     let chunk_size = (vector_arc.len() + num_threads - 1) / num_threads;
     
-    for _ in 0..100 {
+    for _ in 0..iterations {
         let mut handles: Vec<JoinHandle<()>> = Vec::new();
         let centroids = hashmap_arc.lock().unwrap().keys().into_iter().map(|x| x.clone()).collect::<Vec<Centroid>>();
+        
+        for centroid in centroids.as_slice() {
+            if let Some(value) = hashmap_arc.lock().unwrap().get_mut(centroid) {
+                *value = vec![];
+            }
+        }
+        
         let centroids_arc = Arc::new(centroids);
 
         for thread_number in 0..num_threads {
@@ -188,7 +193,7 @@ fn kmeans(vector: Vec<Coordinate>) -> Result<(Vec<Vec<f64>>, Vec<String>), ()> {
                         let mut distances: Vec<Distance> = Vec::new();
                         let local_centroids = c_arc.as_slice();
                         for centroid in local_centroids {
-                            distances.push(manhattan_distance(*coordinate, *centroid.get_coordinate()))
+                            distances.push(euclidean_distance(coordinate, centroid.get_coordinate()))
                         }
 
                         if let Some(index_distance) = distance_min(&distances) {
@@ -223,7 +228,11 @@ fn kmeans(vector: Vec<Coordinate>) -> Result<(Vec<Vec<f64>>, Vec<String>), ()> {
                     curent_coordinates.push(coordinates);
                     new_centroids.push(centroid);
                 }
+                else {
+                    new_centroids.push(centroid);
+                }
             }
+            else { log(format!("\nERROR : the centroid {:?} isn't in the hashmap",centroid)); }
         }
         for (key, value) in new_centroids.iter().zip(curent_coordinates) {
             hashmap_arc.lock().unwrap().insert(*key, value);
@@ -240,8 +249,14 @@ fn kmeans(vector: Vec<Coordinate>) -> Result<(Vec<Vec<f64>>, Vec<String>), ()> {
     Ok((clusters,centroids))
 }
 
-fn manhattan_distance(coord0: Coordinate, coord1: Coordinate) -> Distance {
+#[allow(unused)]
+fn manhattan_distance(coord0: &Coordinate, coord1: &Coordinate) -> Distance {
     Distance((coord0.0 - coord1.0).abs() + (coord0.1 - coord1.1).abs())
+}
+
+fn euclidean_distance(coord0: &Coordinate, coord1: &Coordinate) -> Distance {
+    let (x, y) = (coord0.0-coord1.0, coord0.1-coord1.1);
+    Distance((x*x + y*y).sqrt())
 }
 
 fn distance_min(distances: &Vec<Distance>) -> Option<usize> {

@@ -1,7 +1,6 @@
 import sys
 import json
 import plotly.graph_objects as go
-import plotly.express.colors as pcq  # Alternative valide
 
 def show_stations(longitudes: list[float], latitudes: list[float]):
     """
@@ -21,33 +20,56 @@ def show_stations(longitudes: list[float], latitudes: list[float]):
     fig.update_layout(title='Carte des stations météorologique du dataset')
     fig.show()
 
-def show_clusters(longitudes_groups: list[list[float]], latitudes_groups: list[list[float]]):
+def show_clusters(
+    longitudes_groups: list[list[float]],
+    latitudes_groups: list[list[float]],
+    centroids_longitude: list[float],
+    centroids_latitude: list[float],
+    save_path: str = None
+):
 
     fig = go.Figure()
     colors = [
-        '#FF0000',  # Rouge
-        '#00FF00',  # Vert
-        '#0000FF',  # Bleu
-        '#FFA500',  # Orange
-        '#800080',  # Violet
-        '#FF69B4'   # Rose
+        '#FF0000',  
+        '#00FF00',  
+        '#0000FF',  
+        '#FFA500',  
+        '#800080', 
+        '#FF69B4'
     ]
     
-    for i, (lons, lats) in enumerate(zip(longitudes_groups, latitudes_groups)):
+    for index, (lons, lats) in enumerate(zip(longitudes_groups, latitudes_groups)):
         fig.add_trace(go.Scattergeo(
             lon = lons,
             lat = lats,
             mode = 'markers',
             marker = dict(
                 size = 10,
-                color = colors[i % len(colors)]
+                color = colors[index % len(colors)]
             ),
-            name = f'Groupe {i+1}'
+            name = f'Cluster {index+1}'
+        ))
+        
+    for index in range(0,len(centroids_longitude)):
+        fig.add_trace(go.Scattergeo(
+            lon = [centroids_longitude[index]],
+            lat = [centroids_latitude[index]],
+            mode = 'markers',
+            marker = dict(
+                size = 10,
+                color = colors[index % len(colors)],
+                symbol = "x-open-dot"
+            ),
+            name = f'Centroid {index+1}'
         ))
     
     fig.update_geos(scope='world')
     fig.update_layout(title='Carte des stations météorologiques du dataset')
-    fig.show()
+
+    if save_path != None:
+        fig.write_image(save_path)
+    else:
+        fig.show()
 
 if __name__ == '__main__':
     args = sys.argv
@@ -69,7 +91,18 @@ if __name__ == '__main__':
                 state = True
         show_stations(coords_x,coords_y)
 
-    elif len(args) == 3 and args[2]=="--cluster":
+    elif len(args) >= 3:
+        with open(args[2], "r") as fs:
+            object = json.load(fs)
+        
+        centroids_x = []
+        centroids_y = []
+        for centroid in object:
+            parsed_list = centroid.split(";")
+            coord_x, coord_y = float(parsed_list[1]), float(parsed_list[2])
+            centroids_x.append(coord_x)
+            centroids_y.append(coord_y)
+
         coords_x_groups = []
         coords_y_groups = []
 
@@ -88,4 +121,7 @@ if __name__ == '__main__':
             coords_x_groups.append(x_group)
             coords_y_groups.append(y_group)
 
-        show_clusters(coords_x_groups, coords_y_groups)
+        if len(args) == 4:
+            show_clusters(coords_x_groups, coords_y_groups,centroids_x,centroids_y, args[3])
+        else:
+            show_clusters(coords_x_groups, coords_y_groups,centroids_x,centroids_y)
