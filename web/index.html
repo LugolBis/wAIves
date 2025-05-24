@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>wAIves</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+  <script src="playground.js"></script>
+  <div class="menu">
+    <a href="#mainContainer">
+      <img src="img/wAIves.png"></img>
+    </a>
+    <a href="#playgroundContainer">
+      <img src="img/playground.png"></img>
+    </a>
+    <a href="https://github.com/LugolBis/wAIves" target="_blank">
+      <img src="img/github.png"></img>
+    </a>
+    <a href="https://github.com/LugolBis/wAIves#local-usage-" target="_blank">
+      <img src="img/download.png"></img>
+    </a>
+  </div>
+  <div id="mainContainer" class="MyContainer">
+    <h1>w<span style="color: #1e6da5;">AI</span>ves</h1>
+    <h3>Want to surf the perfect wave ?</h3>
+    <h3>Don't let your surf session turn into a remake of <em>Brice de Nice</em> !</h3>
+    <h3>Use wAIves to predict wave height 🌊🏄‍♂️</h3>
+    <form id="mainForm">
+      <label>Select a model:</label><br><br>
+      <select id="modelMain">
+        <option value="wAIves1v5.0" selected>wAIves1 v5.0</option>
+        <option value="wAIves1v5.1">wAIves1 v5.1</option>
+        <option value="wAIves2v1.0">wAIves2 v1.0</option>
+      </select><br>
+    </form>
+    <br><h4>Enter the location where you want to surf :</h4>
+    <div class="autocomplete-container">
+      <input type="text" id="countryInput" placeholder="Country">
+      <div id="autocomplete-results" class="autocomplete-results"></div> 
+      <input type="text" id="cityInput" placeholder="City">
+    </div>
+    <br><button id="getPrediction" onclick="run()">Wave height prediction</button>
+    <br><h3 id="resultat"></h3>
+  </div>
+  <div id="playgroundContainer" class="MyContainer">
+    <br><br>
+    <h2>Playground</h2>
+    <h4>Test models with custom data</h4>
+    <h4>You can easily retrieve the data you need using the following website : <a href="https://meteotrend.com/" title="Russian weather website" target="_blank">MeteoTrend</a> .</h4>
+    <form id="playgroundForm">
+      <label>Select a model:</label><br><br>
+      <select id="modelPlayground">
+        <option value="wAIves1v5.0" selected>wAIves1 v5.0</option>
+        <option value="wAIves1v5.1">wAIves1 v5.1</option>
+        <option value="wAIves2v1.0">wAIves2 v1.0</option>
+      </select><br>
+    </form>
+    <div id="playgroundInputs">
+      <br><input id="inputLongitude" placeholder="Longitude (DD)" value=""></input>
+        <input id="inputLatitude" placeholder="Latitude (DD)" value=""></input>
+      <br><input id="inputTemperature" placeholder="Temperature (°C)" value=""></input>
+        <input id="inputPressure" placeholder="Pressure (hPa)" value=""></input>  
+      <br><input id="inputWindSpeed" placeholder="Wind speed (m/s)" value=""></input>
+        <input id="inputWindDirection" placeholder="Wind direction (°)" value=""></input>
+    </div>
+    <br><button id="getPredictionPlayground" onclick="runPlayground()">Wave height prediction</button>
+    <br><h3 id="resultatPlayground"></h3>
+  </div>
+  <script src="events.js"></script>
+</body>
+</html>
