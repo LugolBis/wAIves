@@ -13,7 +13,8 @@ style = []
 
 # Additional JavaScript files
 script = [
-    "/src/event.js"
+    "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs",
+    "/tensorflow.js",
 ]
 
 [web.resource.dev]
