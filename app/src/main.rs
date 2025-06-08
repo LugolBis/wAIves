@@ -9,7 +9,7 @@ const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/src/style.css");
 
 fn main() {
-    dioxus::launch(App);
+    launch(App);
 }
 
 #[component]
