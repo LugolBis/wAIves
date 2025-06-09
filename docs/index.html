@@ -5,23 +5,49 @@
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-<script src="/tensorflow.js"></script>
-<link rel="preload" as="script" href="/./assets/app-051e740f91fec3c6.js" crossorigin><link rel="preload" as="fetch" type="application/wasm" href="/./assets/app_bg-647963106eab6df3.wasm" crossorigin></head>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="tensorflow.js"></script>
+  </head>
   <body>
     <div id="main"></div>
-  <script>
-            // We can't use a module script here because we need to start the script immediately when streaming
-            import("/./assets/app-051e740f91fec3c6.js").then(
-                ({ default: init }) => {
-                init("/./assets/app_bg-647963106eab6df3.wasm").then((wasm) => {
-                    if (wasm.__wbindgen_start == undefined) {
-                    wasm.main();
-                    }
-                });
-                }
-            );
-            </script>
-            
-            </body>
+    
+    <script>
+      const customPath = (() => {
+        const path = window.location.pathname;
+        if (path.split('/').length > 2 && path.split('/')[1]) {
+          return '/' + path.split('/')[1];
+        }
+        return '';
+      })();
+      
+      // We can't use a module script here because we need to start the script immediately when streaming
+      import(`${customPath}/assets/app-051e740f91fec3c6.js`).then(
+        ({ default: init }) => {
+          init(`${customPath}/assets/app_bg-647963106eab6df3.wasm`).then((wasm) => {
+            if (wasm.__wbindgen_start == undefined) {
+              wasm.main();
+            }
+          }).catch(error => {
+            console.error('Error when try to init WASM:', error);
+            document.getElementById('main').innerHTML = `
+              <div style="padding:20px; background:#ffebee; color:#b71c1c; border-radius:8px; margin:20px;">
+                <h2>Error when try to load WASM</h2>
+                <p>${error.message}</p>
+                <p>Chemin utilisé: ${customPath}/assets/app_bg-647963106eab6df3.wasm</p>
+              </div>
+            `;
+          });
+        }
+      ).catch(error => {
+        console.error('Error when try to import the module:', error);
+        document.getElementById('main').innerHTML = `
+          <div style="padding:20px; background:#ffebee; color:#b71c1c; border-radius:8px; margin:20px;">
+            <h2>Error when try to load JavaScript</h2>
+            <p>${error.message}</p>
+            <p>Chemin utilisé: ${customPath}/assets/app-051e740f91fec3c6.js</p>
+          </div>
+        `;
+      });
+    </script>
+  </body>
 </html>
