@@ -97,17 +97,17 @@ fn get_cluster(coordinate: Coordinate) -> usize {
 fn get_url(data: &[f64], model: &str, truncate: &mut bool) -> String {
     match model {
         "wAIves1v5.0" => {
-            "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@rust/Models/wAIves1v5.0/model.json".to_string()
+            "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/Models/wAIves1v5.0/model.json".to_string()
         },
         "wAIves1v5.1" => {
-            "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@rust/Models/wAIves1v5.1/model.json".to_string()
+            "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/Models/wAIves1v5.1/model.json".to_string()
         },
         "wAIves2v1.0" => {
             *truncate = true;
-            format!("https://cdn.jsdelivr.net/gh/LugolBis/wAIves@rust/Models/wAIves2v1.{}/model.json",get_cluster(Coordinate(data[0], data[1])))
+            format!("https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/Models/wAIves2v1.{}/model.json",get_cluster(Coordinate(data[0], data[1])))
         },
         _ => {
-            "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@rust/Models/wAIves1v5.0/model.json".to_string()
+            "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/Models/wAIves1v5.0/model.json".to_string()
         }
     }
 }

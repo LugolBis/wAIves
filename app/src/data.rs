@@ -1,4 +1,3 @@
-
 #[derive(Debug, Clone, Copy)]
 /// Countries Abreviations
 pub struct CA<'a>(pub &'a str, pub &'a str);
