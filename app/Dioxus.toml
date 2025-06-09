@@ -9,7 +9,9 @@ title = "wAIves"
 [web.resource]
 
 # Additional CSS style files
-style = []
+style = [
+    "/src/style.css"
+]
 
 # Additional JavaScript files
 script = [
