@@ -47,3 +47,4 @@ rm docs/index.html
 cat index.html > docs/index.html
 rmdir app/docs/public
 rmdir app/docs
+rm index.html
