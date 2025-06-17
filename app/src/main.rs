@@ -6,7 +6,7 @@ use dioxus::prelude::*;
 use crate::components::*;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
-const MAIN_CSS: Asset = asset!("/src/style.css");
+const MAIN_CSS: Asset = asset!("/assets/style.css");
 
 fn main() {
     launch(App);

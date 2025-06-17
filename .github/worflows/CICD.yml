@@ -23,47 +23,37 @@ jobs:
       - name: Build application
         run: |
           cd app
-          dx bundle --out-dir docs
+          # Ajout du base-path pour corriger les chemins relatifs
+          dx bundle --out-dir ../docs --base-path /
 
       - name: Prepare GitHub Pages files
         run: |
-          # Create the 'docs' folder
-          mkdir -p docs
+          # Créer le dossier assets pour les ressources
+          mkdir -p docs/assets
           
-          # Move the created files
-          mv app/docs/public/* docs/
+          # Déplacer les fichiers WASM/JS dans assets
+          find docs -name '*.wasm' -exec mv {} docs/assets/ \;
+          find docs -name '*.js' ! -name 'index.js' -exec mv {} docs/assets/ \;
           
-          # Create the 404.html file
-          cp docs/index.html docs/404.html
+          # Copier les ressources spécifiques
+          cp app/src/tensorflow.js docs/assets/
+          cp app/src/style.css docs/assets/
+          cp app/assets/favicon.ico docs/assets/
           
-          # Copy the resources
-          cp app/src/tensorflow.js docs/
-          cp app/src/style.css docs/
-          cp app/assets/favicon.ico docs/
-
-          # Find the WASM/JS files
-          wasm_file=$(find docs/assets -name '*.wasm' | head -n1)
-          js_file=$(find docs/assets -name '*.js' | head -n1)
-          
-          if [ -z "$wasm_file" ] || [ -z "$js_file" ]; then
-            echo "::error::Fichiers WASM ou JS introuvables"
-            exit 1
-          fi
-          
-          wasm_name=$(basename "$wasm_file")
-          js_name=$(basename "$js_file")
-          
-          echo "WASM file: $wasm_name"
-          echo "JS file: $js_name"
-          
-          # Update the references in index.html
+          # Mettre à jour les références dans index.html
           sed -i -E \
-            -e "s/\/assets\/[^\"]+\.wasm/\/assets\/$wasm_name/g" \
-            -e "s/\/assets\/[^\"]+\.js/\/assets\/$js_name/g" \
+            -e 's/"\/(.*\.wasm)"/"\/assets\/\1"/g' \
+            -e 's/"\/(.*\.js)"/"\/assets\/\1"/g' \
+            -e 's/"\/(tensorflow\.js)"/"\/assets\/\1"/g' \
+            -e 's/"\/(style\.css)"/"\/assets\/\1"/g' \
+            -e 's/"\/(favicon\.ico)"/"\/assets\/\1"/g' \
             docs/index.html
+
+          # Créer la page 404.html
+          cp docs/index.html docs/404.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GHT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
