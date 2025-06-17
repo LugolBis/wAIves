@@ -2,19 +2,14 @@
 public_url = "/"
 
 [web.app]
-
-# HTML title tag content
 title = "wAIves"
+favicon = "assets/favicon.ico"
 
-# include `assets` in web platform
 [web.resource]
-
-# Additional CSS style files
 style = [
-    "/src/style.css"
+    "assets/style.css"
 ]
 
-# Additional JavaScript files
 script = [
     "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs",
     "assets/tensorflow.js",

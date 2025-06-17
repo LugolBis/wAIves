@@ -30,6 +30,9 @@ jobs:
         run: |
           # Créer le dossier assets pour les ressources
           mkdir -p docs/assets
+          mv app/docs/public/* docs/
+          cp -r app/assets/* docs/assets/
+          cp docs/index.html docs/404.html
           
           # Déplacer les fichiers WASM/JS dans assets
           find docs -name '*.wasm' -exec mv {} docs/assets/ \;
