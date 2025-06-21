@@ -5,9 +5,6 @@ mod utils;
 use dioxus::prelude::*;
 use crate::components::*;
 
-const FAVICON: Asset = asset!("assets/favicon.ico");
-const MAIN_CSS: Asset = asset!("assets/style.css");
-
 fn main() {
     launch(App);
 }
@@ -16,9 +13,6 @@ fn main() {
 fn App() -> Element {
 
     rsx! {
-        document::Link { rel: "icon", href: FAVICON }
-        document::Link { rel: "stylesheet", href: MAIN_CSS }
-
         Header {}
         Main {}
         Playground {}
