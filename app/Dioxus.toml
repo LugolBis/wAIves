@@ -1,10 +1,13 @@
 [application]
-public_url = "https://lugolbis.github.io/wAIves/"
+name = "wAIves"
+default_platform = "web"
+out_dir = "docs"
+asset_dir = "assets"
 
 [web.app]
 title = "wAIves"
 favicon = "assets/favicon.ico"
-base_path = "https://lugolbis.github.io/wAIves/"
+base_path = "wAIves/docs/"
 
 [web.resource]
 style = ["assets/style.css"]
