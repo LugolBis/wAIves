@@ -22,6 +22,7 @@ jobs:
 
       - name: Build application
         run: |
+          rm -R docs/
           cd app
           # Ajout du base-path pour corriger les chemins relatifs
           dx bundle --out-dir ../docs --base-path /
@@ -30,7 +31,7 @@ jobs:
         run: |
           # Créer le dossier assets pour les ressources
           mkdir -p docs/assets
-          mv app/docs/public/* docs/
+          mv docs/public/* docs/
           cp -r app/assets/* docs/assets/
           cp docs/index.html docs/404.html
           
@@ -39,8 +40,8 @@ jobs:
           find docs -name '*.js' ! -name 'index.js' -exec mv {} docs/assets/ \;
           
           # Copier les ressources spécifiques
-          cp app/src/tensorflow.js docs/assets/
-          cp app/src/style.css docs/assets/
+          cp app/assets/tensorflow.js docs/assets/
+          cp app/assets/style.css docs/assets/
           cp app/assets/favicon.ico docs/assets/
           
           # Mettre à jour les références dans index.html
