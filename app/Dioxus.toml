@@ -1,14 +1,13 @@
 [application]
-public_url = "/docs/"
+public_url = "https://lugolbis.github.io/wAIves/"
 
 [web.app]
 title = "wAIves"
 favicon = "assets/favicon.ico"
+base_path = "https://lugolbis.github.io/wAIves/"
 
 [web.resource]
-style = [
-    "assets/style.css"
-]
+style = ["assets/style.css"]
 
 script = [
     "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs",
