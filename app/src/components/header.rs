@@ -5,6 +5,11 @@ pub fn Header() -> Element {
     let mut menu_open = use_signal(|| false);
 
     rsx! {
+        // Blur overlay
+        if menu_open() {
+            div { class: "menu-overlay", onclick: move |_| menu_open.set(false) }
+        }
+
         div { id: "header", class: "menu",
             a { href: "#mainContainer", class: "menu-logo",
                 img { src: "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/wAIves.png" }
@@ -14,13 +19,13 @@ pub fn Header() -> Element {
             button {
                 class: "menu-toggle",
                 onclick: move |_| menu_open.set(!menu_open()),
-                if menu_open() {
-                    "<"
-                } else {
-                    ">"
+                img {
+                    src: if menu_open() { "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/menu_close.png" } else { "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/menu_open.png" },
+                    alt: if menu_open() { "Fermer le menu" } else { "Ouvrir le menu" },
                 }
             }
 
+            // Panneau latéral droit
             div { class: if menu_open() { "menu-links menu-open" } else { "menu-links" },
                 a { href: "#playgroundContainer",
                     img { src: "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/playground.png" }
