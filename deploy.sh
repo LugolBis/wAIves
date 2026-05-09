@@ -10,3 +10,4 @@ mkdir ../docs/assets
 cp assets/favicon.ico ../docs/assets/favicon.ico
 cp assets/style.css ../docs/assets/style.css
 cp assets/tensorflow.js ../docs/assets/tensorflow.js
+cp assets/loader.js ../docs/assets/loader.js
