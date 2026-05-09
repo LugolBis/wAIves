@@ -240,6 +240,18 @@ button:active {
     transform: scale(0.98);
 }
 
+.menu-close {
+    background-color: transparent;
+    padding: 6px;
+    margin: 0;
+    width: auto;
+    font-size: inherit;
+}
+
+.menu-close:hover {
+    background-color: transparent;
+}
+
 /* ========= MEDIA QUERIES ========= */
 @media (max-width: 768px) {
     .menu-toggle {
