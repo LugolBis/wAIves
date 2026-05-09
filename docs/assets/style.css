@@ -81,13 +81,15 @@ a:hover {
     border-radius: 8px;
     padding: 6px;
     cursor: pointer;
-    margin: 0 8px;
+    margin: 0 8px 0 auto;
+    position: relative;
+    z-index: 1002;
     transition: transform 0.2s ease;
 }
 
 .menu-toggle img {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     display: block;
 }
 

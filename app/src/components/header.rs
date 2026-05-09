@@ -1,5 +1,12 @@
 use dioxus::prelude::*;
 
+const WAIVES: &str = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/wAIves.png";
+const XMARK: &str = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/xmark.png";
+const MENU: &str = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/menu.png";
+const PLAYGROUND: &str =
+    "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/playground.png";
+const GH: &str = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/github.png";
+
 #[component]
 pub fn Header() -> Element {
     let mut menu_open = use_signal(|| false);
@@ -12,7 +19,7 @@ pub fn Header() -> Element {
 
         div { id: "header", class: "menu",
             a { href: "#mainContainer", class: "menu-logo",
-                img { src: "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/wAIves.png" }
+                img { src: WAIVES }
             }
 
             // Toggle button for small screens
@@ -20,18 +27,18 @@ pub fn Header() -> Element {
                 class: "menu-toggle",
                 onclick: move |_| menu_open.set(!menu_open()),
                 img {
-                    src: if menu_open() { "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/menu_close.png" } else { "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/menu_open.png" },
-                    alt: if menu_open() { "Fermer le menu" } else { "Ouvrir le menu" },
+                    src: if menu_open() { XMARK } else { MENU },
+                    alt: if menu_open() { "Close the menu" } else { "Open the menu" },
                 }
             }
 
             // Panneau latéral droit
             div { class: if menu_open() { "menu-links menu-open" } else { "menu-links" },
                 a { href: "#playgroundContainer",
-                    img { src: "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/playground.png" }
+                    img { src: PLAYGROUND }
                 }
                 a { href: "https://github.com/LugolBis/wAIves",
-                    img { src: "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/github.png" }
+                    img { src: GH }
                 }
             }
         }

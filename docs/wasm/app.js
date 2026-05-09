@@ -2070,7 +2070,7 @@ function __wbg_get_imports() {
         const ret = makeMutClosure(arg0, arg1, 909, __wbg_adapter_69);
         return ret;
     }, arguments) };
-    imports.wbg.__wbindgen_closure_wrapper6305 = function() { return logError(function (arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper6306 = function() { return logError(function (arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 1308, __wbg_adapter_72);
         return ret;
     }, arguments) };
