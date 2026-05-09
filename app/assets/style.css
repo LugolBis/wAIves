@@ -241,6 +241,9 @@ button:active {
 }
 
 .menu-close {
+    display: none;
+    background: none;
+    border: none;
     background-color: transparent;
     padding: 6px;
     margin: 0;
