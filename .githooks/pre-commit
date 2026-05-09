@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "Execute pre-commit hook..."
+
+# AUtomatically run the script to deploy the web page with Dioxus
+./deploy.sh
+
+# Automaticaly add the folder used by Github Pages for the deployment
+git add docs
+
+echo "Hook finished !"
