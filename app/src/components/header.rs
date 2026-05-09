@@ -1,8 +1,8 @@
 use dioxus::prelude::*;
 
 const WAIVES: &str = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/wAIves.png";
-const XMARK: &str = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/xmark.png";
-const MENU: &str = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/menu.png";
+const XMARK: &str = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/xmark.svg";
+const MENU: &str = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/menu.svg";
 const PLAYGROUND: &str =
     "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/playground.png";
 const GH: &str = "https://cdn.jsdelivr.net/gh/LugolBis/wAIves@main/app/assets/img/github.png";
