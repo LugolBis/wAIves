@@ -1,4 +1,4 @@
-(function () {
+function loader_screen_wasm() {
     const LOADER_ID = 'wasm-loader-js';
     if (document.getElementById(LOADER_ID)) return;
 
@@ -55,4 +55,6 @@
       }
     `;
     document.head.appendChild(style);
-})();
+};
+
+document.addEventListener('DOMContentLoaded', function () { loader_screen_wasm(); });

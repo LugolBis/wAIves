@@ -289,10 +289,9 @@ button:active {
         transform: translateX(0);
     }
 
-    .menu-links.menu-close {
+    .menu-links.menu-open .menu-close {
         display: flex !important;
         pointer-events: auto;
-        display: flex;
         align-items: center;
         justify-content: center;
         background: none;
@@ -302,7 +301,6 @@ button:active {
         width: auto;
         cursor: pointer;
         transition: transform 0.2s ease;
-        position: relative;
         z-index: 1002;
     }
 
