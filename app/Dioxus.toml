@@ -13,6 +13,7 @@ base_path = "wAIves/"
 style = ["assets/style.css"]
 
 script = [
+    "assets/loader.js",
     "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs",
     "assets/tensorflow.js",
 ]
