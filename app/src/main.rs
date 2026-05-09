@@ -2,8 +2,8 @@ mod components;
 mod data;
 mod utils;
 
-use dioxus::prelude::*;
 use crate::components::*;
+use dioxus::prelude::*;
 
 fn main() {
     launch(App);
@@ -11,6 +11,11 @@ fn main() {
 
 #[component]
 fn App() -> Element {
+    use_effect(|| {
+        if let Some(loader) = gloo::utils::document().get_element_by_id("wasm-loader-js") {
+            loader.remove();
+        }
+    });
 
     rsx! {
         Header {}
