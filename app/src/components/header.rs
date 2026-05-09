@@ -23,17 +23,20 @@ pub fn Header() -> Element {
             }
 
             // Toggle button for small screens
-            button {
-                class: "menu-toggle",
-                onclick: move |_| menu_open.set(!menu_open()),
-                img {
-                    src: if menu_open() { XMARK } else { MENU },
-                    alt: if menu_open() { "Close the menu" } else { "Open the menu" },
+            if !menu_open() {
+                button {
+                    class: "menu-toggle",
+                    onclick: move |_| menu_open.set(true),
+                    img { src: MENU, alt: "Open the menu" }
                 }
             }
 
-            // Panneau latéral droit
             div { class: if menu_open() { "menu-links menu-open" } else { "menu-links" },
+                button {
+                    class: "menu-close",
+                    onclick: move |_| menu_open.set(false),
+                    img { src: XMARK, alt: "Close the menu" }
+                }
                 a { href: "#playgroundContainer",
                     img { src: PLAYGROUND }
                 }

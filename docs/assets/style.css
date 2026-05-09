@@ -257,7 +257,7 @@ button:active {
         box-shadow: -4px 0 16px rgba(0, 0, 0, 0.2);
         flex-direction: column;
         align-items: center;
-        padding: 80px 16px 24px;
+        padding: 16px 16px 24px;
         z-index: 1000;
         gap: 24px;
         overflow-y: auto;
@@ -269,6 +269,36 @@ button:active {
     .menu-links.menu-open {
         display: flex;
         transform: translateX(0);
+    }
+
+    .menu-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        padding: 6px;
+        margin: 0 0 8px 0;
+        width: auto;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        position: relative;
+        z-index: 1002;
+    }
+
+    .menu-close img {
+        width: 36px;
+        height: 36px;
+        display: block;
+    }
+
+    .menu-close:hover {
+        background: none;
+        transform: scale(1.05);
+    }
+
+    .menu-close:active {
+        transform: scale(0.95);
     }
 
     .menu-links a img {
@@ -327,6 +357,19 @@ button:active {
     button {
         width: 90%;
         padding: 12px 24px;
+    }
+
+    .menu-toggle,
+    .menu-close {
+        width: auto;
+        padding: 6px;
+        font-size: inherit;
+        background-color: transparent;
+    }
+
+    .menu-toggle:hover,
+    .menu-close:hover {
+        background-color: transparent;
     }
 
     .autocomplete-results div {
